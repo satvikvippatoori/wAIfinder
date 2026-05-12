@@ -1,5 +1,7 @@
 # wAIfinder ✈️
 
+https://waifinder.streamlit.app/
+
 An AI-powered travel planning assistant that generates personalized, tradeoff-aware trip recommendations based on a user’s travel preferences, budget, pace, and destination interests.
 
 wAIfinder helps users compare multiple distinct trip concepts rather than generating a single generic itinerary. The application leverages generative AI to create realistic travel routes, explain tradeoffs, and produce day-by-day travel suggestions through an interactive Streamlit interface.
@@ -98,6 +100,7 @@ travel-ai-assistant/
 │   └── constants.py
 │
 ├── src/
+│   ├── __init__.py
 │   ├── ai_client.py
 │   ├── input_validator.py
 │   ├── itinerary_service.py
@@ -107,56 +110,12 @@ travel-ai-assistant/
 ├── prompts/
 │
 ├── tests/
+│   ├── __init__.py
+│   ├── test_input_validator.py
+│   ├── test_itinerary_service.py
+│   ├── test_prompt_builder.py
+│   └── test_response_parser.py
 │
 ├── requirements.txt
 ├── .env
 └── README.md
-
-Installation
-1. Clone Repository
-git clone https://github.com/YOUR_USERNAME/travel-ai-assistant.git
-cd travel-ai-assistant
-2. Create Virtual Environment
-Windows
-python -m venv venv
-venv\Scripts\activate
-Mac/Linux
-python3 -m venv venv
-source venv/bin/activate
-3. Install Dependencies
-pip install -r requirements.txt
-4. Create .env
-GROQ_API_KEY=your_api_key_here
-5. Run Application
-streamlit run app/streamlit_app.py
-Key Design Decisions
-Structured Inputs Over Free-Form Prompting
-
-The application uses structured user inputs to create more reliable and personalized itinerary generation.
-
-Multiple Trip Concepts Instead of One Itinerary
-
-Instead of generating a single route, the AI creates multiple distinct travel directions to help users compare tradeoffs and choose the best experience for their preferences.
-
-JSON-Based AI Responses
-
-The LLM is prompted to return structured JSON outputs for reliable parsing and rendering in the frontend.
-
-Tradeoff-Aware Recommendations
-
-The AI explains not only what each trip offers, but also the compromises associated with each route.
-
-Future Improvements
-Flight integration
-Hotel recommendations
-Budget estimation engine
-Interactive maps
-Save/share itineraries
-User accounts
-Real-time weather integration
-Screenshots
-
-Add screenshots here after deployment.
-
-Author
-Satvik Vippatoori
