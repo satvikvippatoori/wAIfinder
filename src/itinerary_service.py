@@ -1,6 +1,7 @@
 from src.input_validator import validate_inputs
 from src.prompt_builder import build_itinerary_prompt
 from src.ai_client import call_ai
+from src.response_parser import parse_itinerary_response
 
 
 def generate_itineraries(
@@ -9,7 +10,7 @@ def generate_itineraries(
     budget: str,
     styles: list[str],
     pace: str,
-) -> str:
+) -> dict:
     is_valid, error_message = validate_inputs(
         trip_length=trip_length,
         region=region,
@@ -29,4 +30,5 @@ def generate_itineraries(
         pace=pace,
     )
 
-    return call_ai(prompt)
+    raw_response = call_ai(prompt)
+    return parse_itinerary_response(raw_response)

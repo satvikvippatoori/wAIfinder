@@ -17,25 +17,43 @@ User preferences:
 - Top travel styles: {styles_text}
 - Travel pace: {pace}
 
-Important rules:
-- The 3 options should be different trip concepts, not tiny variations of the same trip.
+Rules:
+- Each option must be a different trip concept, not tiny variations of the same trip.
 - If the user gives a broad region, suggest different routes within or near that region.
 - If the user gives a specific country, keep the trips mostly within that country.
 - Make the itineraries realistic for the trip length and pace.
-- Do not overload relaxed trips.
-- Fast-paced trips can include more destinations.
-- Budget should influence the destination choices and activity style.
-- Include tradeoffs for each itinerary.
-- Explain why each itinerary fits the user’s preferences.
+- The daily plan must have exactly {trip_length} items.
+- Include realistic tradeoffs for each option.
+- The recommendation should choose the best overall fit for the user's preferences.
 
-For each itinerary, include:
-1. Title
-2. Route
-3. Day split
-4. Best for
-5. Summary
-6. Tradeoffs
-7. Day-by-day plan
+Return ONLY valid JSON.
+Do not include markdown.
+Do not include explanations outside JSON.
 
-Return the response in clean markdown with clear headings.
+Use this exact schema:
+{{
+  "itineraries": [
+    {{
+      "title": "string",
+      "route": ["string"],
+      "best_for": "string",
+      "pace_fit": "string",
+      "summary": "string",
+      "tradeoffs": ["string"],
+      "daily_plan": ["Day 1: string"]
+    }}
+  ],
+  "comparison": {{
+    "recommended_choice": "string",
+    "why": "string",
+    "comparison_rows": [
+      {{
+        "trip": "string",
+        "best_for": "string",
+        "pace_fit": "string",
+        "main_tradeoff": "string"
+      }}
+    ]
+  }}
+}}
 """
