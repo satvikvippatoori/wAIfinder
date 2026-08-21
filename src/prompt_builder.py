@@ -22,8 +22,11 @@ Rules:
 - If the user gives a broad region, suggest different routes within or near that region.
 - If the user gives a specific country, keep the trips mostly within that country.
 - Make the itineraries realistic for the trip length and pace.
-- The daily plan must have exactly {trip_length} items.
-- Include realistic tradeoffs for each option.
+- Include realistic tradeoffs.
+- Keep each daily_plan item under 20 words.
+- Keep each summary under 60 words.
+- Include exactly 2 tradeoffs per itinerary.
+- The daily_plan must contain exactly {trip_length} entries.
 - The recommendation should choose the best overall fit for the user's preferences.
 
 Return ONLY valid JSON.

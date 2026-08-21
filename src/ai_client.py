@@ -4,9 +4,7 @@ from groq import Groq
 
 load_dotenv()
 
-client = Groq(
-    api_key=os.getenv("GROQ_API_KEY")
-)
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 
 def call_ai(prompt: str) -> str:
@@ -14,18 +12,19 @@ def call_ai(prompt: str) -> str:
         model="openai/gpt-oss-20b",
         messages=[
             {
-                "role": "system",
+                "role": "user",
                 "content": (
                     "You are an expert AI travel planner. "
-                    "You create realistic, personalized, tradeoff-aware trip options."
+                    "Return valid JSON only.\n\n"
+                    + prompt
                 ),
-            },
-            {
-                "role": "user",
-                "content": prompt,
-            },
+            }
         ],
-        temperature=0.7,
+        temperature=0.6,
+        reasoning_effort="low",
+        reasoning_format="hidden",
+        max_completion_tokens=6000,
+        response_format={"type": "json_object"},
     )
 
     return response.choices[0].message.content
