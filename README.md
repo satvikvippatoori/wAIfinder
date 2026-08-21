@@ -68,7 +68,7 @@ Best for food, culture, and urban exploration.
 
 ### AI Integration
 - Groq API
-- Llama 3.1 8B Instant
+- openai/gpt-oss-20b
 
 ### Libraries
 - python-dotenv
